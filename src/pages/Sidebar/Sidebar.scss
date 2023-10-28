@@ -1,0 +1,13 @@
+.sidebar{
+    width: 7%;
+    height: 100vh;
+    background-color: #309BAF;
+    display: flex;
+    flex-direction: column;
+    //padding: 10px;
+    align-items: center;
+    justify-content: space-evenly;
+    i{
+        font-size: 3rem;
+    }
+}

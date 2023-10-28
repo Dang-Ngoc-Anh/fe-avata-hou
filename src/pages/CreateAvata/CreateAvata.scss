@@ -1,0 +1,76 @@
+.container__avata{
+    display: flex;
+    max-width: 800px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+    // background-color: var(--primary-color);
+    // background-color:linear-gradient(#e66465, #9198e5);
+    // background-color:rgb(223, 153, 153); 
+    // background-color:rgb(22, 144, 184);  
+    /* background:linear-gradient(#e66465, #9198e5); */
+    background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
+    padding: 30px;
+    border-radius: 10px;
+    border: 1px solid var(--texr-color);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    align-items: center;
+    margin-left: 3rem;
+}
+
+.container__avata .img-container{
+}
+.img__box #canvas{
+    width: 100%;
+    height: 100%;
+  
+}
+.container__avata .img__box{
+    width: 500px;
+    height: 500px;;
+    border: 2px solid var(--text-color);
+    border-radius: 5px;
+}
+
+.container__avata .img__box #canvas .img-avata{
+    
+}
+
+.container__avata .container__input{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.container__avata .container__input input{
+    padding: 10px 10px;
+    background: var(--primary-color);
+    border-radius:0.8rem;
+
+}
+
+.container__avata .container__input label{
+    font-size: 1.5rem;
+}
+.container__avata .container__input button{
+    margin-top:2rem;
+    padding: 1rem;
+    background: var(--secondary-color);
+    border: 1px solid var(--texr-color); 
+    border-radius: 2rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+
+}
+
+.frame-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Set a higher z-index to ensure it's on top of the preview */
+  }

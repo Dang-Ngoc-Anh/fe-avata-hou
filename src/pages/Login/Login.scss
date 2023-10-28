@@ -1,0 +1,80 @@
+.login{
+    width: 60rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.05);  
+    margin-top: 4rem;
+    margin-left: 50%;
+}
+
+.login .logo{
+    width: 20rem;
+    height: 20rem;
+    margin: 3rem;
+}
+
+.logo img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.login .input__box{
+    min-width: 60%;
+}
+.login .form-control{
+    font-size: 1.2rem;
+    outline: none;
+    /* border: none; */
+    width: 100%;
+    height: 3rem;
+    background: #eeeeee;
+    color: gray;
+    transition: .5s;
+    padding: 1rem;
+    margin: 1rem;
+    border: 2px solid transparent;
+    border-radius: 0.5rem;
+}
+.login .form-control:focus{
+    border: 2px solid var(--primary-color);
+}
+.btn-login{
+    padding: 1rem 5rem;
+    background: var(--primary-color);
+    color: white;
+    font-weight: bold;
+    font-size: 1.5rem;
+    border: 1px solid var(--primary-color);
+    border-radius: 0.5rem;
+    margin: 2rem;
+    transition: 1.2s;
+    cursor: pointer;
+}
+
+.btn-login:hover{
+    background: var(--secondary-color);
+}
+
+.row{
+    min-width: 5px;
+    min-height: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 15px;
+   }
+.custom-checkbox{
+}
+   
+.forgot-password{
+    color: red;
+    margin-left: 2rem;
+}
