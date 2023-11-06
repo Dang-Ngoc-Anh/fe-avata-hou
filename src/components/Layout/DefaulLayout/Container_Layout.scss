@@ -1,0 +1,13 @@
+.containerLayout{
+    display: flex;
+    margin: auto;
+    width: 100%;
+    position: relative;
+}
+
+@media only screen and (max-width: 768px) {
+    .containerLayout{
+        display: flex;
+        flex-direction: column;
+    }
+}

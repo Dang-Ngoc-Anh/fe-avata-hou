@@ -3,7 +3,6 @@ import CustemInput from "../../components/Custeminput";
 import "./Login.scss";
 const Login = () => {
   return (
-    <form action="" method="">
       <div className="login">
         <div className="logo">
           <img src="./logo.svg" alt="loi" />
@@ -33,7 +32,6 @@ const Login = () => {
           Đăng Nhập
         </button>
       </div>
-    </form>
   );
 };
 

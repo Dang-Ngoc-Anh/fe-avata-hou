@@ -23,8 +23,12 @@ const Home = () => {
       });
   }, []);
 
+  // console.log(frame[0].image);
+  // console.log(img);
+  // const img = frame[0].image;
+  // console.log(img);
   return (
-    <section>
+    <section className="section">
       {/* <CustemInput
         type="text"
         className="search__input"
@@ -38,8 +42,9 @@ const Home = () => {
           frame.map((user) => <Box props={user} />)
         )}
       </div>
-      <CreateAvata className="avt" />
+      <CreateAvata className="avt"/>
     </section>
+
   );
 };
 

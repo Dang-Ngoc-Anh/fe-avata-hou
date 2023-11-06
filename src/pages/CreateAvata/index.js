@@ -8,15 +8,14 @@ import "../../../node_modules/cropperjs/dist/cropper.css";
 import { logDOM } from "@testing-library/react";
 // import "../../node_modules/cropperjs/dist/cropper.css";
 
-const CreateAvata = () => {
+const CreateAvata = (props) => {
   const [selectedFile, setSelectedFile] = useState(); // chọn file avata local
   // const [selectedFileFrame, setSelectedFrame] = useState(); // chọn frame local
-  const [data, setData] = useState("./child.jpg"); // default value data crop
+  const [data, setData] = useState(""); // default value data crop
   const [frame, setFrame] = useState(); // data frame khi có frame thay đổi
-  const [preview, setPreview] = useState(); // data avata khi get local , fomat blog
+  const [preview, setPreview] = useState("./child.jpg"); // data avata khi get local , fomat blog
   // const [frameLocal, setFrameLocal] = useState(); // data frame khi get locaj
   let { id } = useParams(); // id frame to data base
-
   // create a preview as a side effect, whenever selected file is changed
   useEffect(() => {
     if (!selectedFile) {
@@ -84,6 +83,7 @@ const CreateAvata = () => {
     drowImg(canvas, frame, preview);
   }, [frame, preview]);
 
+  
   const onSelectFileFinal = (e) => {
     if (!e.target.files || e.target.files.length === 0) {
       setSelectedFile(undefined);
@@ -148,7 +148,7 @@ const CreateAvata = () => {
           checkOrientation={false}
           guides={true}
           crop={onCrop}
-          zoomable={false}
+          zoomable={true}
           className="cropper"
         />
         <div className="box" style={{ width: "50%", float: "right" }}>
@@ -158,7 +158,6 @@ const CreateAvata = () => {
             style={{
               width: "100%",
               float: "left",
-              height: "35rem",
               border: "1px solid var(--primary-color)",
             }}
           />
@@ -188,7 +187,7 @@ const CreateAvata = () => {
           onClick={handleChooseFrame}
         /> */}
         <button className="btn-success" onClick={saveCrop}>
-          Save
+          Lưu
         </button>
       </div>
     </div>

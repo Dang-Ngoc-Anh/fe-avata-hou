@@ -49,7 +49,10 @@ const Frame = () => {
     }
   };
   return (
-    <div className="container__avata">
+    <div className="container__avata container__frame">
+      <div className="img-frame">
+        <img src={preview}/>
+      </div>
       <div className="container__input">
         <label>Tên khung</label>
         <input
@@ -71,8 +74,8 @@ const Frame = () => {
           multiple
         />
         <button type="submit" className="btn-success" onClick={handleSubmit}>
-          Save
-        </button>
+          Lưu
+        </button> 
       </div>
     </div>
   );

@@ -9,7 +9,6 @@
     border-radius: 5px;
     box-shadow: 5px 5px 15px rgba(0,0,0,0.05);  
     margin-top: 4rem;
-    margin-left: 50%;
 }
 
 .login .logo{
@@ -78,3 +77,10 @@
     color: red;
     margin-left: 2rem;
 }
+
+
+@media only screen and (max-width: 768px) {
+.login{
+    width: 30rem;
+}
+ }
