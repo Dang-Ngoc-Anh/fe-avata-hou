@@ -1,20 +1,22 @@
-import React, { useState, useEffect, useRef, createRef } from "react";
+import React, { useState, useEffect, useRef, createRef, useMemo } from "react";
 import "./CreateAvata.scss";
 import Cropper from "react-cropper";
 import "../FixSizeImg/FixSizeImg.scss";
-import { useParams } from "react-router-dom";
+import { json, useParams } from "react-router-dom";
 import axios from "axios";
 import "../../../node_modules/cropperjs/dist/cropper.css";
 import { logDOM } from "@testing-library/react";
 // import "../../node_modules/cropperjs/dist/cropper.css";
 
-const CreateAvata = (props) => {
+const CreateAvata = () => {
   const [selectedFile, setSelectedFile] = useState(); // chọn file avata local
   // const [selectedFileFrame, setSelectedFrame] = useState(); // chọn frame local
-  const [data, setData] = useState(""); // default value data crop
+  const [data, setData] = useState(); // default value data crop
   const [frame, setFrame] = useState(); // data frame khi có frame thay đổi
-  const [preview, setPreview] = useState("./child.jpg"); // data avata khi get local , fomat blog
-  // const [frameLocal, setFrameLocal] = useState(); // data frame khi get locaj
+  const [preview, setPreview] = useState('./child.jpg'); // data avata khi get local , fomat blog
+  const [frameInit , setFrameInit] = useState(localStorage.getItem('frameDefault'))
+  const [cropData, setCropData] = useState();
+  const cropperRef = createRef();
   let { id } = useParams(); // id frame to data base
   // create a preview as a side effect, whenever selected file is changed
   useEffect(() => {
@@ -28,21 +30,31 @@ const CreateAvata = (props) => {
     return () => URL.revokeObjectURL(objectUrl);
   }, [selectedFile]);
 
-  // useEffect(() => {
-  //   if (!selectedFileFrame) {
-  //     setFrameLocal(undefined);
-  //     return;
-  //   }
-  //   const objectUrls = URL.createObjectURL(selectedFileFrame);
-  //   setFrameLocal(objectUrls);
-  //   // free memory when ever this component is unmounted
-  //   return () => URL.revokeObjectURL(objectUrls);
-  // }, [selectedFileFrame]);
+  // get value image to path folder public
+  useEffect(() => {
+    const convertToBase64 = async () => {
+      const response = await fetch(preview);
+      const blob = await response.blob();
+      const reader = new FileReader();
 
+      reader.onload = () => {
+        const base64String = reader.result;
+        setPreview(base64String);
+      };
+
+      reader.readAsDataURL(blob);
+    };
+
+    if (preview) {
+      convertToBase64();
+    }
+  }, [preview]);
+
+  console.log(preview);
   const drowImg = (canvas, srcFrame, srcAvta) => {
     const ctx = canvas.getContext("2d");
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    const imgs = [srcAvta, srcFrame];
+    const imgs = [srcAvta , srcFrame];
     const imgObjs = [];
     let count = imgs.length;
     imgs.forEach((img) => {
@@ -93,16 +105,6 @@ const CreateAvata = (props) => {
     setSelectedFile(e.target.files[0]);
   };
 
-  // const onSelectFileFrame = (e) => {
-  //   if (!e.target.files || e.target.files.length === 0) {
-  //     setSelectedFrame(undefined);
-  //     return;
-  //   }
-  //   // I've kept this example simple by using the first image instead of multiple
-  //   setSelectedFrame(e.target.files[0]);
-  // };
-  const [cropData, setCropData] = useState();
-  const cropperRef = createRef();
   const onCrop = () => {
     setCropData(
       cropperRef.current?.cropper.getCroppedCanvas().toDataURL("image/png")
@@ -117,17 +119,13 @@ const CreateAvata = (props) => {
   // gửi data canvas lên url
 
   useEffect(() => {
-    const url = `https://be-avata-hou-production.up.railway.app/api/v1/frame/upload/${id}`;
-    if (id)
+    const url = `https://be-avata-hou-production.up.railway.app/api/v1/frame/upload/${id ? id : frameInit}`;
+    if (id || frameInit)
       axios.get(url).then((res) => {
         setFrame(`${res.data.data}`);
-      });
-  }, [id]);
+    });
+  }, [id, frameInit]);
 
-  // const handleChooseFrame = () => {
-  //   id = undefined;
-  //   setFrame(frameLocal);
-  // };
   return (
     <div className="container__avata">
       <div className="img-container">
