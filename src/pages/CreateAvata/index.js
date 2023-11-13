@@ -13,7 +13,7 @@ const CreateAvata = () => {
   // const [selectedFileFrame, setSelectedFrame] = useState(); // chọn frame local
   const [data, setData] = useState(); // default value data crop
   const [frame, setFrame] = useState(); // data frame khi có frame thay đổi
-  const [preview, setPreview] = useState('./child.jpg'); // data avata khi get local , fomat blog
+  const [preview, setPreview] = useState('./img_backgroung_avata.jpg'); // data avata khi get local , fomat blog
   const [frameInit , setFrameInit] = useState(localStorage.getItem('frameDefault'))
   const [cropData, setCropData] = useState();
   const cropperRef = createRef();
